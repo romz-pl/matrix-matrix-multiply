@@ -2,16 +2,21 @@
 #include <random>
 #include <cassert>
 #include <algorithm>
+#include <immintrin.h>
 
 Mtx::Mtx(uint32_t n)
     : m_n(n)
 {
-    m_data = new double[n * n];
+    // m_data = new double[n * n];
+    m_data = (double*) _mm_malloc (n * n * sizeof(double), 64);
+    if (m_data == nullptr) 
+        throw std::bad_alloc{}; // ("failed to allocate largest problem size");
 }
 
 Mtx::~Mtx()
 {
-    delete[] m_data;
+    // delete[] m_data;
+    free(m_data);
 }
 
 void Mtx::generate(double min_val, double max_val)
