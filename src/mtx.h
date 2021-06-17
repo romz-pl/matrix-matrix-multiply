@@ -1,7 +1,7 @@
 #include <cstdint>
 
 //
-// Squared matrix.
+// Squared matrix of fixed size.
 // The mumber of rows is equal to the number of columns.
 //
 
