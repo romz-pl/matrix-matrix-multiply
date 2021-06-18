@@ -6,7 +6,7 @@
 #include <iostream>
 #include "get_timestamp.h"
 
-double calc_abs_sum(const uint32_t n, double* c, double* q)
+double calc_abs_sum(const uint32_t n, const double* c, const double* q)
 {
     double ret{ 0.0 };
     for(uint32_t i = 0; i < n * n; i++)
