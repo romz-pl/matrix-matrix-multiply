@@ -1,6 +1,16 @@
 #include "avx512_subword_parallel.h"
 #include <x86intrin.h>
 
+/*
+Optimized version of DGEMM using C intrinsics to generate the AVX subword-parallel instructions
+for the x86 and loop unrolling to create more opportunities for instruction-level parallelism.
+
+We can see the impact of
+instruction-level parallelism by unrolling the loop so that the multiple-issue,
+out-of-order execution processor has more instructions to work with.
+The function below is the unrolled version of function avx512, which contains
+the C intrinsics to produce the AVX-512 instructions.
+*/
 void avx512_subword_parallel(const uint32_t n, const double* A, const double* B, double* C)
 {
     constexpr uint32_t UNROLL = 4;
