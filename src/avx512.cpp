@@ -2,8 +2,7 @@
 #include <x86intrin.h>
 
 /*
-Optimized version of DGEMM using C intrinsics to generate the AVX512
-subword-parallel instructions for the x86.
+Optimized version of DGEMM using C intrinsics to generate the AVX512.
 
 To demonstrate the performance impact of subwordparallelism, we rerun the code using AVX.
 While compiler writers may eventually be able to routinely produce high-quality code that uses the AVX
