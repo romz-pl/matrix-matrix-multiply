@@ -19,6 +19,13 @@ _mm512_store_pd() to store 8 double-precision floating-point numbers
 from c0 into the matrix C. As we are going through 8 elements each
 iteration, the outer for loop increments `i` by 8.
 
+Inside the loops, we first load 8 elements of A again using
+_mm512_ load_pd(). To multiply these elements by one element of B, we
+first use the intrinsic _mm512_broadcast_sd(), which makes eight identical
+copies of the scalar double precision number (in this case an element of B)
+in one of the ZMM registers. We then use _mm512_fmadd_pd to
+multiply the 8 double-precision results in parallel and then add the 8
+products to the 8 sums in c0.
 
 */
 void avx512(const uint32_t n, const double* A, const double* B, double* C)
