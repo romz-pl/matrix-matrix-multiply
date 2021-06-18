@@ -1,4 +1,5 @@
 #include "avx256.h"
+#include "avx512.h"
 #include "basic.h"
 #include "mtx.h"
 #include <iostream>
@@ -16,7 +17,7 @@ double calc_abs_sum(const uint32_t n, double* c, double* q)
 
 int main()
 {
-    constexpr uint32_t n = 512;
+    constexpr uint32_t n = 1024;
     Mtx a(n), b(n);
 
     a.generate();
@@ -43,10 +44,21 @@ int main()
     std::cout << "Elapsed time (in microseconds) for `avx256`: " << t_avx256 << "\n";
     std::cout << "Time-for-basic / Time-for-avx256 = " << t_basic / static_cast<double>(t_avx256) << "\n";
 
-    const double abs_sum = calc_abs_sum(n, c_basic.data(), c_avx256.data());
+    const double abs_sum_avx256 = calc_abs_sum(n, c_basic.data(), c_avx256.data());
+    std::cout << abs_sum_avx256 << "\n";
 
-    // std::cout << std::scientific;
-    std::cout << abs_sum << "\n";
+
+    Mtx c_avx512(n);
+    c_avx512.zero();
+    t0 = get_timestamp();
+    avx512(n, a.data(), b.data(), c_avx512.data());
+    t1 = get_timestamp();
+    const timestamp_t t_avx512 = t1 - t0;
+    std::cout << "Elapsed time (in microseconds) for `avx512`: " << t_avx512 << "\n";
+    std::cout << "Time-for-basic / Time-for-avx512 = " << t_basic / static_cast<double>(t_avx512) << "\n";
+
+    const double abs_sum_avx512 = calc_abs_sum(n, c_basic.data(), c_avx512.data());
+    std::cout << abs_sum_avx512 << "\n";
     return 0;
 }
 

@@ -1,6 +1,10 @@
 #include "basic.h"
 
-void basic(uint32_t n, double* A, double* B, double* C)
+/*
+Unoptimized version of DGEMM algorithm matrix-matrix multiplication.
+C = A * B
+*/
+void basic(uint32_t n, const double* A, const double* B, double* C)
 {
     for(uint32_t i = 0; i < n; ++i)
     {

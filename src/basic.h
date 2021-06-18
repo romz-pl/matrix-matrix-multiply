@@ -1,3 +1,3 @@
 #include <cstdint>
-void basic(uint32_t n, double* a, double* b, double* c);
+void basic(uint32_t n, const double* a, const double* b, double* c);
 
