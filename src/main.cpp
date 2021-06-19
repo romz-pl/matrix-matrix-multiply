@@ -2,6 +2,7 @@
 #include "avx512.h"
 #include "avx512_subword_parallel.h"
 #include "basic.h"
+#include "basic_blocked.h"
 #include "mtx.h"
 #include <iostream>
 #include "get_timestamp.h"
@@ -18,7 +19,7 @@ double calc_abs_sum(const uint32_t n, const double* c, const double* q)
 
 int main()
 {
-    constexpr uint32_t n = 1024;
+    constexpr uint32_t n = 128;
     Mtx a(n), b(n);
 
     a.generate();
@@ -72,6 +73,16 @@ int main()
     const double abs_sum_avx512_sp = calc_abs_sum(n, c_basic.data(), c_avx512_sp.data());
     std::cout << abs_sum_avx512_sp << "\n";
 
+    Mtx c_blocked(n);
+    c_blocked.zero();
+    t0 = get_timestamp();
+    basic_blocked(n, a.data(), b.data(), c_blocked.data());
+    t1 = get_timestamp();
+    const timestamp_t t_blocked = t1 - t0;
+    std::cout << "Elapsed time (in microseconds) for `bacis_blocked`: " << t_blocked << "\n";
+    std::cout << "Time-for-basic / Time-for-basic_blocked = " << t_basic / static_cast<double>(t_blocked) << "\n";
+    const double abs_sum_blocked = calc_abs_sum(n, c_basic.data(), c_blocked.data());
+    std::cout << abs_sum_blocked << "\n";
 
 
 
