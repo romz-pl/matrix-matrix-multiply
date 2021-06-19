@@ -1,6 +1,8 @@
 # Algorithms for matrix matrix multiplication, dgemm
 
-The algorithms are taken form the book David A. Patterson, John L. Hennessy "Computer Organization and Design. The hardware software interface. RISK-V Edition", 
+The algorithms are taken form the books:
+1. David A. Patterson, John L. Hennessy "Computer Organization and Design. The hardware software interface. RISK-V Edition", 
+2. David A. Patterson, John L. Hennessy "Computer Organization and Design. The hardware software interface. MIPS Edition"
 
 ## There are the following algorithms implemented:
 1. Basic, unoptimized, see src/basic.cpp
