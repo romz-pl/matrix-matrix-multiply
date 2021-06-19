@@ -7,6 +7,7 @@ The algorithms are taken form the book David A. Patterson, John L. Hennessy "Com
 2. Using AVX with 256-bit intrinsics, see src/avx256.cpp
 3. Using AVX with 512-bit intinsics, see src/avx512.cpp
 4. Using AVX with 512-bit intinsics with loop unrolling, see src/avx512_subword_parallel.cpp
+5. Basic, unoptimized with blocking (use blocks), see src/basic_blocked.cpp
 
 ## How to build?
 To build the system, execute the following commands:
