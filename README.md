@@ -33,3 +33,13 @@ For Core i7 CPU, with matrix size equal to `640`, I obtained the following resul
       dgemm_unrolled:  elapsed-time=     16634     speed-up=    14.546
        dgemm_blocked:  elapsed-time=     12981     speed-up=   18.6394
 ```
+
+For Core i7 CPU, with matrix size equal to `128`, I obtained the following results averaged over `1000` randomly generated matrices:
+```
+         dgemm_basic:  elapsed-time=      1661
+ dgemm_basic_blocked:  elapsed-time=      1260     speed-up=   1.31825
+        dgemm_avx256:  elapsed-time=       443     speed-up=   3.74944
+        dgemm_avx512:  elapsed-time=       233     speed-up=   7.12876
+      dgemm_unrolled:  elapsed-time=       106     speed-up=   15.6698
+       dgemm_blocked:  elapsed-time=       100     speed-up=     16.61
+```
