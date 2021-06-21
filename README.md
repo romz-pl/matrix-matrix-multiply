@@ -54,3 +54,12 @@ The command `./src/dgemm` executes the programm.
       dgemm_unrolled:  elapsed-time=    558080     speed-up=   8.22874
        dgemm_blocked:  elapsed-time=    181634     speed-up=   25.2832
 ```
+4. For Core i7 CPU, with matrix size equal to `2560`, I obtained the following results for one randomly generated matrices:
+```
+         dgemm_basic:  elapsed-time=  62731813
+ dgemm_basic_blocked:  elapsed-time=  16474759     speed-up=   3.80775
+        dgemm_avx256:  elapsed-time=  17050012     speed-up=   3.67928
+        dgemm_avx512:  elapsed-time=   9012450     speed-up=   6.96057
+      dgemm_unrolled:  elapsed-time=   5958033     speed-up=   10.5289
+       dgemm_blocked:  elapsed-time=   1837494     speed-up=   34.1399
+```
