@@ -1,20 +1,9 @@
 #include "calc_speed_up.h"
-
-/*
-double calc_abs_sum(const uint32_t n, const double* c, const double* q)
-{
-    double ret{ 0.0 };
-    for(uint32_t i = 0; i < n * n; i++)
-    {
-        ret += std::abs(c[i] - q[i]);
-    }
-    return ret;
-}
-*/
+#include "check.h"
 
 int main()
 {
-
+    check();
     calc_speed_up();
     return 0;
 
