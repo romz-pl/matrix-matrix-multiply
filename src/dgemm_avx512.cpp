@@ -1,4 +1,4 @@
-#include "avx512.h"
+#include "dgemm_avx512.h"
 #include <x86intrin.h>
 
 /*
@@ -28,7 +28,7 @@ multiply the 8 double-precision results in parallel and then add the 8
 products to the 8 sums in c0.
 
 */
-void avx512(const uint32_t n, const double* A, const double* B, double* C)
+void dgemm_avx512(const uint32_t n, const double* A, const double* B, double* C)
 {
     for( uint32_t i = 0; i < n; i += 8)
     {

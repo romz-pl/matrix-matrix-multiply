@@ -1,5 +1,5 @@
 #include "dgemm_avx256.h"
-#include "avx512.h"
+#include "dgemm_avx512.h"
 #include "avx512_subword_parallel.h"
 #include "avx512_blocked.h"
 #include "dgemm_basic.h"
@@ -55,7 +55,7 @@ int main()
     Mtx c_avx512(n);
     c_avx512.zero();
     t0 = get_timestamp();
-    avx512(n, a.data(), b.data(), c_avx512.data());
+    dgemm_avx512(n, a.data(), b.data(), c_avx512.data());
     t1 = get_timestamp();
     const timestamp_t t_avx512 = t1 - t0;
     std::cout << "Elapsed time (in microseconds) for `avx512`: " << t_avx512 << "\n";
