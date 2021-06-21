@@ -1,4 +1,4 @@
-#include "basic_blocked.h"
+#include "dgemm_basic_blocked.h"
 
 /*
 
@@ -64,7 +64,7 @@ static void do_block (const uint32_t n, const uint32_t si, const uint32_t sj, co
 }
 
 
-void basic_blocked(const uint32_t n, const double* A, const double* B, double* C)
+void dgemm_basic_blocked(const uint32_t n, const double* A, const double* B, double* C)
 {
     for( uint32_t sj = 0; sj < n; sj += BLOCKSIZE )
     {

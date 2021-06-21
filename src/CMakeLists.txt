@@ -6,7 +6,7 @@ add_executable( ${EXE_NAME}
     avx512_blocked.cpp
     avx512_subword_parallel.cpp
     dgemm_basic.cpp
-    basic_blocked.cpp
+    dgemm_basic_blocked.cpp
     get_timestamp.cpp
     main.cpp
     mtx.cpp

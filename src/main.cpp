@@ -3,7 +3,7 @@
 #include "avx512_subword_parallel.h"
 #include "avx512_blocked.h"
 #include "dgemm_basic.h"
-#include "basic_blocked.h"
+#include "dgemm_basic_blocked.h"
 #include "mtx.h"
 #include "dgemm_openmp.h"
 #include <iostream>
@@ -75,20 +75,20 @@ int main()
     const double abs_sum_avx512_sp = calc_abs_sum(n, c_basic.data(), c_avx512_sp.data());
     std::cout << abs_sum_avx512_sp << "\n";
 
-    Mtx c_blocked(n);
-    c_blocked.zero();
+    Mtx c_basic_blocked(n);
+    c_basic_blocked.zero();
     t0 = get_timestamp();
-    basic_blocked(n, a.data(), b.data(), c_blocked.data());
+    dgemm_basic_blocked(n, a.data(), b.data(), c_basic_blocked.data());
     t1 = get_timestamp();
-    const timestamp_t t_blocked = t1 - t0;
-    std::cout << "Elapsed time (in microseconds) for `bacis_blocked`: " << t_blocked << "\n";
-    std::cout << "Time-for-basic / Time-for-basic_blocked = " << t_basic / static_cast<double>(t_blocked) << "\n";
-    const double abs_sum_blocked = calc_abs_sum(n, c_basic.data(), c_blocked.data());
-    std::cout << abs_sum_blocked << "\n";
+    const timestamp_t t_basic_blocked = t1 - t0;
+    std::cout << "Elapsed time (in microseconds) for `bacis_blocked`: " << t_basic_blocked << "\n";
+    std::cout << "Time-for-basic / Time-for-basic_blocked = " << t_basic / static_cast<double>(t_basic_blocked) << "\n";
+    const double abs_sum_basic_blocked = calc_abs_sum(n, c_basic.data(), c_basic_blocked.data());
+    std::cout << abs_sum_basic_blocked << "\n";
 
 
     Mtx c_avx512_blocked(n);
-    c_blocked.zero();
+    c_avx512_blocked.zero();
     t0 = get_timestamp();
     avx512_blocked(n, a.data(), b.data(), c_avx512_blocked.data());
     t1 = get_timestamp();
