@@ -77,7 +77,7 @@ void check()
             const double abs_sum = calc_abs_sum(n, c.data(), c_basic.data());
             if(abs_sum > eps)
             {
-                std::cout << abs_sum << "Error in algorithm " << e.m_name << "\n";
+                std::cout << abs_sum << "  Error in algorithm " << e.m_name << "\n";
             }
         }
     }
