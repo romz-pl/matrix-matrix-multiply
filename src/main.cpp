@@ -2,7 +2,7 @@
 #include "avx512.h"
 #include "avx512_subword_parallel.h"
 #include "avx512_blocked.h"
-#include "basic.h"
+#include "dgemm_basic.h"
 #include "basic_blocked.h"
 #include "mtx.h"
 #include "dgemm_openmp.h"
@@ -32,7 +32,7 @@ int main()
 
 
     timestamp_t t0 = get_timestamp();
-    basic(n, a.data(), b.data(), c_basic.data());
+    dgemm_basic(n, a.data(), b.data(), c_basic.data());
     timestamp_t t1 = get_timestamp();
     const timestamp_t t_basic = t1 - t0;
     std::cout << "Elapsed time (in microseconds) for `basic`: " << t_basic << "\n";
