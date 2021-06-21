@@ -1,4 +1,4 @@
-#include "avx512_subword_parallel.h"
+#include "dgemm_unrolled.h"
 #include <x86intrin.h>
 
 /*
@@ -11,7 +11,7 @@ out-of-order execution processor has more instructions to work with.
 The function below is the unrolled version of function avx512, which contains
 the C intrinsics to produce the AVX-512 instructions.
 */
-void avx512_subword_parallel(const uint32_t n, const double* A, const double* B, double* C)
+void dgemm_unrolled(const uint32_t n, const double* A, const double* B, double* C)
 {
     constexpr uint32_t UNROLL = 4;
 

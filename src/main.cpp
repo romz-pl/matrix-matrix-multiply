@@ -1,6 +1,6 @@
 #include "dgemm_avx256.h"
 #include "dgemm_avx512.h"
-#include "avx512_subword_parallel.h"
+#include "dgemm_unrolled.h"
 #include "avx512_blocked.h"
 #include "dgemm_basic.h"
 #include "dgemm_basic_blocked.h"
@@ -64,16 +64,16 @@ int main()
     std::cout << abs_sum_avx512 << "\n";
 
 
-    Mtx c_avx512_sp(n);
-    c_avx512_sp.zero();
+    Mtx c_unrolled(n);
+    c_unrolled.zero();
     t0 = get_timestamp();
-    avx512_subword_parallel(n, a.data(), b.data(), c_avx512_sp.data());
+    dgemm_unrolled(n, a.data(), b.data(), c_unrolled.data());
     t1 = get_timestamp();
-    const timestamp_t t_avx512_sp = t1 - t0;
-    std::cout << "Elapsed time (in microseconds) for `avx512_subword_parallel`: " << t_avx512_sp << "\n";
-    std::cout << "Time-for-basic / Time-for-avx512_sp = " << t_basic / static_cast<double>(t_avx512_sp) << "\n";
-    const double abs_sum_avx512_sp = calc_abs_sum(n, c_basic.data(), c_avx512_sp.data());
-    std::cout << abs_sum_avx512_sp << "\n";
+    const timestamp_t t_unrolled = t1 - t0;
+    std::cout << "Elapsed time (in microseconds) for `unrolled`: " << t_unrolled << "\n";
+    std::cout << "Time-for-basic / Time-for-unrolled = " << t_basic / static_cast<double>(t_unrolled) << "\n";
+    const double abs_sum_unrolled = calc_abs_sum(n, c_basic.data(), c_unrolled.data());
+    std::cout << abs_sum_unrolled << "\n";
 
     Mtx c_basic_blocked(n);
     c_basic_blocked.zero();
