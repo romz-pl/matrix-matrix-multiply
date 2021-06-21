@@ -1,14 +1,6 @@
-#include "dgemm_avx256.h"
-#include "dgemm_avx512.h"
-#include "dgemm_unrolled.h"
-#include "dgemm_blocked.h"
-#include "dgemm_basic.h"
-#include "dgemm_basic_blocked.h"
-#include "mtx.h"
-#include "dgemm_openmp.h"
-#include <iostream>
-#include "get_timestamp.h"
+#include "calc_speed_up.h"
 
+/*
 double calc_abs_sum(const uint32_t n, const double* c, const double* q)
 {
     double ret{ 0.0 };
@@ -18,98 +10,15 @@ double calc_abs_sum(const uint32_t n, const double* c, const double* q)
     }
     return ret;
 }
+*/
 
 int main()
 {
-    constexpr uint32_t n = 32*30;
-    Mtx a(n), b(n);
 
-    a.generate();
-    b.generate();
-
-    Mtx c_basic(n);
-    c_basic.zero();
-
-
-    timestamp_t t0 = get_timestamp();
-    dgemm_basic(n, a.data(), b.data(), c_basic.data());
-    timestamp_t t1 = get_timestamp();
-    const timestamp_t t_basic = t1 - t0;
-    std::cout << "Elapsed time (in microseconds) for `basic`: " << t_basic << "\n";
-    
-
-
-    Mtx c_avx256(n);
-    c_avx256.zero();
-    t0 = get_timestamp();
-    dgemm_avx256(n, a.data(), b.data(), c_avx256.data());
-    t1 = get_timestamp();
-    const timestamp_t t_avx256 = t1 - t0;
-    std::cout << "Elapsed time (in microseconds) for `avx256`: " << t_avx256 << "\n";
-    std::cout << "Time-for-basic / Time-for-avx256 = " << t_basic / static_cast<double>(t_avx256) << "\n";
-
-    const double abs_sum_avx256 = calc_abs_sum(n, c_basic.data(), c_avx256.data());
-    std::cout << abs_sum_avx256 << "\n";
-
-
-    Mtx c_avx512(n);
-    c_avx512.zero();
-    t0 = get_timestamp();
-    dgemm_avx512(n, a.data(), b.data(), c_avx512.data());
-    t1 = get_timestamp();
-    const timestamp_t t_avx512 = t1 - t0;
-    std::cout << "Elapsed time (in microseconds) for `avx512`: " << t_avx512 << "\n";
-    std::cout << "Time-for-basic / Time-for-avx512 = " << t_basic / static_cast<double>(t_avx512) << "\n";
-    const double abs_sum_avx512 = calc_abs_sum(n, c_basic.data(), c_avx512.data());
-    std::cout << abs_sum_avx512 << "\n";
-
-
-    Mtx c_unrolled(n);
-    c_unrolled.zero();
-    t0 = get_timestamp();
-    dgemm_unrolled(n, a.data(), b.data(), c_unrolled.data());
-    t1 = get_timestamp();
-    const timestamp_t t_unrolled = t1 - t0;
-    std::cout << "Elapsed time (in microseconds) for `unrolled`: " << t_unrolled << "\n";
-    std::cout << "Time-for-basic / Time-for-unrolled = " << t_basic / static_cast<double>(t_unrolled) << "\n";
-    const double abs_sum_unrolled = calc_abs_sum(n, c_basic.data(), c_unrolled.data());
-    std::cout << abs_sum_unrolled << "\n";
-
-    Mtx c_basic_blocked(n);
-    c_basic_blocked.zero();
-    t0 = get_timestamp();
-    dgemm_basic_blocked(n, a.data(), b.data(), c_basic_blocked.data());
-    t1 = get_timestamp();
-    const timestamp_t t_basic_blocked = t1 - t0;
-    std::cout << "Elapsed time (in microseconds) for `bacis_blocked`: " << t_basic_blocked << "\n";
-    std::cout << "Time-for-basic / Time-for-basic_blocked = " << t_basic / static_cast<double>(t_basic_blocked) << "\n";
-    const double abs_sum_basic_blocked = calc_abs_sum(n, c_basic.data(), c_basic_blocked.data());
-    std::cout << abs_sum_basic_blocked << "\n";
-
-
-    Mtx c_blocked(n);
-    c_blocked.zero();
-    t0 = get_timestamp();
-    dgemm_blocked(n, a.data(), b.data(), c_blocked.data());
-    t1 = get_timestamp();
-    const timestamp_t t_blocked = t1 - t0;
-    std::cout << "Elapsed time (in microseconds) for `blocked`: " << t_blocked << "\n";
-    std::cout << "Time-for-basic / Time-for-blocked = " << t_basic / static_cast<double>(t_blocked) << "\n";
-    const double abs_sum_blocked = calc_abs_sum(n, c_basic.data(), c_blocked.data());
-    std::cout << abs_sum_blocked << "\n";
-
-    Mtx c_openmp(n);
-    c_openmp.zero();
-    t0 = get_timestamp();
-    dgemm_openmp(n, a.data(), b.data(), c_openmp.data());
-    t1 = get_timestamp();
-    const timestamp_t t_openmp = t1 - t0;
-    std::cout << "Elapsed time (in microseconds) for `openMP`: " << t_openmp << "\n";
-    std::cout << "Time-for-basic / Time-for-openmp = " << t_basic / static_cast<double>(t_openmp) << "\n";
-    const double abs_sum_openmp = calc_abs_sum(n, c_basic.data(), c_openmp.data());
-    std::cout << abs_sum_openmp << "\n";
-
-
+    calc_speed_up();
     return 0;
+
+    // const double abs_sum_avx256 = calc_abs_sum(n, c_basic.data(), c_avx256.data());
+    // std::cout << abs_sum_avx256 << "\n";
 }
 
