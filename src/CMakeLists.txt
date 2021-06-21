@@ -10,5 +10,6 @@ add_executable( ${EXE_NAME}
     get_timestamp.cpp
     main.cpp
     mtx.cpp
+    dgemm_openmp.cpp
 )
 
