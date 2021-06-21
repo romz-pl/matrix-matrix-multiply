@@ -1,4 +1,4 @@
-#include "avx256.h"
+#include "dgemm_avx256.h"
 #include <x86intrin.h>
 
 /*
@@ -22,7 +22,7 @@ The optimized code (function called `avx256`) performs at 6.4 GigaFLOPS. The AVX
 is 3.85 times as fast, which is very close to the factor of 4.0 increase that you might hope for
 from performing four times as many operations at a time by using subword parallelism.
 */
-void avx256(uint32_t n, const double* A, const double* B, double* C)
+void dgemm_avx256(const uint32_t n, const double* A, const double* B, double* C)
 {
 
     for( uint32_t i = 0; i < n; i += 4 )

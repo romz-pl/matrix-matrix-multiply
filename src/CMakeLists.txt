@@ -1,7 +1,7 @@
 SET( EXE_NAME dgemm )
 
 add_executable( ${EXE_NAME}
-    avx256.cpp
+    dgemm_avx256.cpp
     avx512.cpp
     avx512_blocked.cpp
     avx512_subword_parallel.cpp

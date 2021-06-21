@@ -1,4 +1,4 @@
-#include "avx256.h"
+#include "dgemm_avx256.h"
 #include "avx512.h"
 #include "avx512_subword_parallel.h"
 #include "avx512_blocked.h"
@@ -42,7 +42,7 @@ int main()
     Mtx c_avx256(n);
     c_avx256.zero();
     t0 = get_timestamp();
-    avx256(n, a.data(), b.data(), c_avx256.data());
+    dgemm_avx256(n, a.data(), b.data(), c_avx256.data());
     t1 = get_timestamp();
     const timestamp_t t_avx256 = t1 - t0;
     std::cout << "Elapsed time (in microseconds) for `avx256`: " << t_avx256 << "\n";
