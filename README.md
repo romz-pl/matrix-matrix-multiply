@@ -29,48 +29,48 @@ The command `./src/dgemm` executes the programm.
 1. For Core i7 CPU, with matrix size equal to `128`, I obtained the following results averaged over `1000` randomly generated matrices:
 ```
          dgemm_basic:  elapsed-time=      1661
- dgemm_basic_blocked:  elapsed-time=      1260     speed-up=   1.31825
-        dgemm_avx256:  elapsed-time=       443     speed-up=   3.74944
-        dgemm_avx512:  elapsed-time=       233     speed-up=   7.12876
-      dgemm_unrolled:  elapsed-time=       106     speed-up=   15.6698
-       dgemm_blocked:  elapsed-time=       100     speed-up=     16.61
+ dgemm_basic_blocked:  elapsed-time=      1260     speed-up=    1.31
+        dgemm_avx256:  elapsed-time=       443     speed-up=    3.74
+        dgemm_avx512:  elapsed-time=       233     speed-up=    7.12
+      dgemm_unrolled:  elapsed-time=       106     speed-up=   15.66
+       dgemm_blocked:  elapsed-time=       100     speed-up=   16.61
 ```
 
 2. For Core i7 CPU, with matrix size equal to `640`, I obtained the following results averaged over `10` randomly generated matrices:
 ```
          dgemm_basic:  elapsed-time=    241958
- dgemm_basic_blocked:  elapsed-time=    162224     speed-up=   1.49151
-        dgemm_avx256:  elapsed-time=     66246     speed-up=   3.65242
-        dgemm_avx512:  elapsed-time=     35604     speed-up=   6.79581
-      dgemm_unrolled:  elapsed-time=     16634     speed-up=    14.546
-       dgemm_blocked:  elapsed-time=     12981     speed-up=   18.6394
+ dgemm_basic_blocked:  elapsed-time=    162224     speed-up=   1.49
+        dgemm_avx256:  elapsed-time=     66246     speed-up=   3.65
+        dgemm_avx512:  elapsed-time=     35604     speed-up=   6.79
+      dgemm_unrolled:  elapsed-time=     16634     speed-up=  14.54
+       dgemm_blocked:  elapsed-time=     12981     speed-up=  18.63
 ```
 
 3. For Core i7 CPU, with matrix size equal to `1280`, I obtained the following results averaged over `5` randomly generated matrices:
 ```
          dgemm_basic:  elapsed-time=   4592295
- dgemm_basic_blocked:  elapsed-time=   1626700     speed-up=   2.82307
-        dgemm_avx256:  elapsed-time=   1227037     speed-up=   3.74259
-        dgemm_avx512:  elapsed-time=    637091     speed-up=   7.20822
-      dgemm_unrolled:  elapsed-time=    558080     speed-up=   8.22874
-       dgemm_blocked:  elapsed-time=    181634     speed-up=   25.2832
+ dgemm_basic_blocked:  elapsed-time=   1626700     speed-up=   2.82
+        dgemm_avx256:  elapsed-time=   1227037     speed-up=   3.74
+        dgemm_avx512:  elapsed-time=    637091     speed-up=   7.20
+      dgemm_unrolled:  elapsed-time=    558080     speed-up=   8.22
+       dgemm_blocked:  elapsed-time=    181634     speed-up=  25.28
 ```
 4. For Core i7 CPU, with matrix size equal to `2560`, I obtained the following results for one randomly generated matrices:
 ```
          dgemm_basic:  elapsed-time=  62731813
- dgemm_basic_blocked:  elapsed-time=  16474759     speed-up=   3.80775
-        dgemm_avx256:  elapsed-time=  17050012     speed-up=   3.67928
-        dgemm_avx512:  elapsed-time=   9012450     speed-up=   6.96057
-      dgemm_unrolled:  elapsed-time=   5958033     speed-up=   10.5289
-       dgemm_blocked:  elapsed-time=   1837494     speed-up=   34.1399
+ dgemm_basic_blocked:  elapsed-time=  16474759     speed-up=   3.80
+        dgemm_avx256:  elapsed-time=  17050012     speed-up=   3.67
+        dgemm_avx512:  elapsed-time=   9012450     speed-up=   6.96
+      dgemm_unrolled:  elapsed-time=   5958033     speed-up=  10.52
+       dgemm_blocked:  elapsed-time=   1837494     speed-up=  34.13
 ```
 
 5. For Core i7 CPU, with matrix size equal to `5120`, I obtained the following results for one randomly generated matrices:
 ```
-        dgemm_basic:  elapsed-time=1154120417
- dgemm_basic_blocked:  elapsed-time= 137582063     speed-up=    8.3886
-        dgemm_avx256:  elapsed-time= 297156247     speed-up=   3.88388
-        dgemm_avx512:  elapsed-time= 144941094     speed-up=   7.96269
-      dgemm_unrolled:  elapsed-time=  97428303     speed-up=   11.8458
-       dgemm_blocked:  elapsed-time=  18558107     speed-up=   62.1896
+        dgemm_basic:   elapsed-time= 1154120417
+ dgemm_basic_blocked:  elapsed-time=  137582063     speed-up=   8.38
+        dgemm_avx256:  elapsed-time=  297156247     speed-up=   3.88
+        dgemm_avx512:  elapsed-time=  144941094     speed-up=   7.96
+      dgemm_unrolled:  elapsed-time=   97428303     speed-up=  11.84
+       dgemm_blocked:  elapsed-time=   18558107     speed-up=  62.18
 ```
