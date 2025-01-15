@@ -5,7 +5,7 @@ The algorithms are taken form the books:
 2. David A. Patterson, John L. Hennessy "Computer Organization and Design. The hardware software interface. MIPS Edition"
 
 ## There are the following algorithms implemented:
-1. Basic, unoptimized, see [src/basic.cpp](./src/basic.cpp)
+1. Basic, unoptimized, see [src/dgemm_basic.cpp](./src/dgemm_basic.cpp)
 2. Using AVX with 256-bit intrinsics, see src/avx256.cpp
 3. Using AVX with 512-bit intinsics, see src/avx512.cpp
 4. Using AVX with 512-bit intinsics with loop unrolling, see src/avx512_subword_parallel.cpp
