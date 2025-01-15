@@ -8,7 +8,7 @@ The algorithms are taken form the books:
 1. Basic, unoptimized, [dgemm_basic.cpp](./src/dgemm_basic.cpp)
 2. Using AVX 256-bit intrinsics, [dgemm_avx256.cpp](./src/dgemm_avx256.cpp)
 3. Using AVX 512-bit intinsics, [dgemm_avx512.cpp](./src/dgemm_avx512.cpp)
-4. Using AVX 512-bit intinsics with loop unrolling, see src/avx512_subword_parallel.cpp
+4. Using AVX 512-bit intinsics with loop unrolling, [dgemm_unrolled.cpp](./src/dgemm_unrolled.cpp)
 5. Blocked version, unoptimized, [dgemm_basic_blocked.cpp](./src/dgemm_basic_blocked.cpp)
 6. Blocked version with AVX 512-bit intinsics [dgemm_blocked.cpp](./src/dgemm_blocked.cpp)
 
