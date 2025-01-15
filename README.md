@@ -10,7 +10,7 @@ The algorithms are taken form the books:
 3. Using AVX 512-bit intinsics, [dgemm_avx512.cpp](./src/dgemm_avx512.cpp)
 4. Using AVX 512-bit intinsics with loop unrolling, [dgemm_unrolled.cpp](./src/dgemm_unrolled.cpp)
 5. Blocked version, unoptimized, [dgemm_basic_blocked.cpp](./src/dgemm_basic_blocked.cpp)
-6. Blocked version with AVX 512-bit intinsics [dgemm_blocked.cpp](./src/dgemm_blocked.cpp)
+6. Blocked version with AVX 512-bit intinsics with loop unrolling [dgemm_blocked.cpp](./src/dgemm_blocked.cpp)
 
 ## How to build?
 To build the system, execute the following commands:
